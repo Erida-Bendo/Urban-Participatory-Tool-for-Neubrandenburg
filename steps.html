@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Neubrandenburg</title>
+    <meta
+      property="og:description"
+      content="Drag the marker to a new location on a map and populate its coordinates in a display."
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@3.4.0/dist/maplibre-gl.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/maplibre-gl@3.4.0/dist/maplibre-gl.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row window">
+        <div class="col-4">
+          <div class="menu">
+            <div id="title" class="row">
+              <h3 id="name" class="text">Klimatische Handlungsempfehlungen für Neubrandenburg</h3>
+            </div>
+            <div class="infoContainer">
+              <p id="analysis">
+                  <b>Der Schwerpunkt unseres Projekts liegt in der Analyse der klimatischen Situation in der Innenstadt von Neubrandenburg. Darauf aufbauend schlagen wir die folgenden Maßnahmen vor. </b><br><br>
+                  Das untersuchte Gebiet umfasst nur die Innenstadt und ist auf der Karte rechts in Rot dargestellt.<br><br>
+                  <br><br>Klicken Sie auf die Schaltfläche <i>'STARTEN'</i>, um zum nächsten Schritt zu gelangen.
+                </p>
+              </p>
+              <p id="intro" style="display: none;">
+                <b>Unsere Maßnahmenstrategie für eine klimagerechte, inklusive und generationsgerechte Innenstadt von Neubrandenburg basiert sich auf vier Zielen: </b><br><br><br>
+                <br>- Entstehung von Hitzeinseln durch Verschattung vorbeugen<br>
+                <br>- Wärmespeicher in der Innenstadt vermeiden<br>
+                <br>- Kritische Kaltluftströme verhindern<br>
+                <br>- Lebens- und Aufenthaltsqualität stärken
+                <br><br><br><br>
+                  Klicken Sie auf die Schaltfläche, um zum nächsten Schritt zu gelangen. Dort haben Sie die Möglichkeit mehr 
+                  über die konkreten Maßnahmen zu erfahren.
+              </p>
+            </div>
+            
+            <img id="icon" src="./icons/total.png"></img>
+            
+          </div>
+          <div class="footer"> 
+            <button type="button" class="btn-primary">STARTEN</button>
+            <div id="images">
+              <img src="./logoB.png" class="image" />
+              <img src="./logo.png" class="image" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8 p-0">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>
