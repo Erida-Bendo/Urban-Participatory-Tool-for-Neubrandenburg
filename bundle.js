@@ -47,6 +47,7 @@ var markers=[];
 const button = document.getElementsByClassName("btn-primary")[0];
 
 const intro = document.getElementById("intro");
+const title = document.getElementById("name");
 const info = document.getElementsByClassName("infoContainer")[0];
 const logo=document.getElementById("icon");
 const analysis = document.getElementById("analysis");
@@ -128,6 +129,8 @@ const funcs=[
         info.style.height="20%";
         logo.style.width="100px";
         logo.style.height="100px";
+        title.innerHTML="1. Entstehung von Hitzeinseln durch Verschattung vorbeugen";
+        title.style.color="#fcd500";
         intro.innerHTML = "<b>Unsere Analysen zeigen, dass die Zeiträume, in denen Hitzestress empfunden wird, sich bis 2050 mehr als verdoppeln werden.\
                            Als übergeordnete Maßnahme kann Verschattung diesem Hitzestress entgegenwirken.</b>\
                            <br><br> Wir haben folgende Maßnahmen ausgewählt, um eine ausreichende Verschattung zu ermöglichen:\
@@ -186,6 +189,8 @@ const funcs=[
         removeMarkers();
         intro.innerHTML = intro.textContent.trim();
         info.style.height="20%";
+        title.innerHTML="2. Wärmespeicher in der Innenstadt vermeiden";
+        title.style.color="#fc7700";
         intro.innerHTML = "<b>Gebäude, Straßen und andere Infrastrukturen absorbieren Sonnenwärme stärker als natürliche Landschaften, wie Wälder und Gewässer. Städtische Gebiete, in denen diese Strukturen stark konzentriert und nur wenige Grünflächen vorhanden sind, werden zu 'Hitzeinseln' mit höheren Temperaturen im Vergleich zu abgelegenen Gebieten.</b>\
                            <br><br> Wir haben folgende Maßnahmen ausgewählt, um Wärmespeicher in der Stadt zu vermeiden:\
                            <br><br><i> - Begrünung\
@@ -228,6 +233,8 @@ const funcs=[
         removeMarkers();
         intro.innerHTML = intro.textContent.trim();
         info.style.height="20%";
+        title.innerHTML="3. Kritische Kaltluftströme verhindern";
+        title.style.color="#00d0fc";
         intro.innerHTML = "<b>Starke Winde erhöhen die empfundene Kälte im Winter.</b>\
                            <br><br> Wir haben folgende Maßnahmen ausgewählt, um kritische Kaltluftströme zu vermeiden:\
                            <br><br><i> - Hecken\
@@ -269,6 +276,8 @@ const funcs=[
         removeMarkers();
         intro.innerHTML = intro.textContent.trim();
         info.style.height="20%";
+        title.innerHTML="3. Lebens- und Aufenthaltsqualität stärken";
+        title.style.color="#fc0024";
         intro.innerHTML = "<b>Folgende Maßnahmen können die Aufenthaltsqualität im Freien steigern\
                             und diese Aufenthaltsorte so den Bewohnern das ganze Jahr über zugänglich machen:</b>\
                            <br><br><i> - Verschattete Sitzgelegenheiten\
@@ -342,9 +351,10 @@ const funcs=[
         getMarkerCoordinates(10);
         getInput(10);
         logo.remove();
-        getMarkerCoordinates(selectedElements[2]);
         removeMarkers();
-        intro.innerHTML = "Wir bedanken uns für Ihre Teilnahme. Optional können Sie gerne Ihr Alter eintragen und einen Kommentar hinterlassen.";
+        title.innerHTML="Klimatische Handlungsempfehlungen für die Innenstadt von Neubrandenburg";
+        title.style.color="black";
+        intro.innerHTML = "Wir bedanken uns für Ihre Teilnahme. Optional können Sie gerne Ihr Alter und Wohnort eintragen und einen Kommentar hinterlassen.";
         button.remove();
 
         input1=document.createElement("div");
@@ -352,10 +362,16 @@ const funcs=[
         info.appendChild(input1);
 
         var age = document.createElement("h");
-        age.textContent="Alter";
+        age.textContent="Alter:";
         var ageInput= document.createElement("input");
         ageInput.type="text";
         ageInput.id="input";
+
+        var place = document.createElement("h");
+        place.textContent="Wohnort:";
+        var placeInput= document.createElement("input");
+        placeInput.type="text";
+        placeInput.id="input";
 
         input2=document.createElement("div");
         input2.id="inputs";
@@ -366,17 +382,44 @@ const funcs=[
         input3.id="inputs";
         info.appendChild(input3);
 
+        input4=document.createElement("div");
+        input4.id="inputs";
+        info.appendChild(input4);
+
         var comment = document.createElement("h");
-        comment.textContent="Kommentar";
+        comment.textContent="Kommentar:";
         var commentInput = document.createElement("input");
         commentInput.type = "text"; 
         commentInput.id="input";
 
+        var visitor = document.createElement("h");
+        visitor.textContent="Nutzergruppe:";
 
-        input1.appendChild(age);
-        input1.appendChild(ageInput);
-        input3.appendChild(comment);
-        input3.appendChild(commentInput);
+
+        var fruits = ["Bewohner", "Besucher", "Tourist"];
+
+        // Create a select element
+        var selectElement = document.createElement("select");
+        selectElement.id = "fruitSelect";
+        selectElement.name = "fruits";
+
+        // Create and append option elements based on the array
+        for (var i = 0; i < fruits.length; i++) {
+            var optionElement = document.createElement("option");
+            optionElement.value = fruits[i].toLowerCase();
+            optionElement.text = fruits[i];
+            selectElement.appendChild(optionElement);
+        }    
+
+            input1.appendChild(age);
+            input1.appendChild(ageInput);
+            input2.appendChild(place);
+            input2.appendChild(placeInput);
+            input3.appendChild(visitor);
+            input3.appendChild(selectElement);
+            input4.appendChild(comment);
+            input4.appendChild(commentInput);
+            
 
         
         var endButton = document.createElement("button");
@@ -399,7 +442,10 @@ const funcs=[
             input1.remove();
             input2.remove();
             input3.remove();
+            input4.remove();
             console.log(ageInput.value);
+            console.log(placeInput.value);
+            console.log(selectElement.value);
             console.log(commentInput.value);
         };
 
